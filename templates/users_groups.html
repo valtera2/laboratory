@@ -1,0 +1,14 @@
+{% if user %}
+<table class="laboratory_list">
+	<tr>
+		<td>State</td>
+		<td>{{ user_state }}</td>
+	</tr>
+</table>
+{% elif group %}
+{% if projects %}
+{{ projects_list }}
+{% else %}
+{{ subgroups_list }}
+{% endif %}
+{% endif %}

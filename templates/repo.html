@@ -1,0 +1,172 @@
+{% if about %}
+<div class="project_readme">
+{% if repo_readme %}
+{{ repo_readme }}
+{% else %}
+<p style="background: red;">This project doesn't have a README file.</p>
+{% endif %}
+</div>
+{% elif summary %}
+<table class="laboratory_list">
+	<tr>
+		<td>Idle</td>
+		<td>{{ repo_idle }}</td>
+	</tr>
+	<tr>
+		<td>Git clone URL</td>
+		<td>{{ repo_cloneurl }}</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>{{ repo_clonessh }}</td>
+	</tr>
+</table>
+
+<table class="laboratory_list">
+{% if repo_branches_list %}
+	<tr>
+		<th>Branch</th>
+		<th>Commit message</th>
+		<th>Author</th>
+		<th>Age</th>
+	</tr>
+	{{ repo_branches_list }}
+{% endif %}
+</table>
+
+<table class="laboratory_list">
+{% if repo_tags_list %}
+	<tr>
+		<th>Tag</th>
+		<th>Commit message</th>
+		<th>Author</th>
+		<th>Age</th>
+	</tr>
+	{{ repo_tags_list }}
+{% endif %}
+</table>
+
+{% elif tree %}
+{% if repo_tree %}
+<table class="laboratory_list">
+	<tr>
+		<th>Mode</th>
+		<th>Name</th>
+		<th>Type</th>
+	</tr>
+	{{ repo_tree }}
+</table>
+{% else %}
+<table class="laboratory_blob">
+	<tr>
+		<td class="laboratory_bloblines">
+<pre>
+{{ repo_bloblines }}
+</pre>
+		</td>
+		<td class="laboratory_blobfile">
+<pre>
+{{ repo_blob }}
+</pre>
+		</td>
+	</tr>
+</table>
+{% endif %}
+
+{% elif issues %}
+{% if repo_issueslist %}
+<ul class="laboratory_issuestabs">
+	<li><a href="?state=all">All issues</a></li>
+	<li><a href="?state=opened">Open issues</a></li>
+	<li><a href="?state=closed">Closed issues</a></li>
+</ul>
+<table class="laboratory_list laboratory_issues">
+	<tr>
+		<th>Id</th>
+		<th>Name</th>
+		<th>Author</th>
+		<th>State</th>
+		<th>Idle</th>
+	</tr>
+	{{ repo_issueslist }}
+</table>
+<a href="?state={{ repo_issuesstate }}&page={{ repo_issuesnextpage }}">Next →</a>
+{% elif repo_issue %}
+<h3>{{ repo_issuetitle }} - #{{ repo_issueid }}</h3>
+<table class="laboratory_list laboratory_issues">
+	<tr>
+		<td>State</td>
+		<td>{{ repo_issuestate }}</td>
+	</tr>
+	<tr>
+		<td>Idle</td>
+		<td>{{ repo_issueidle }}</td>
+	</tr>
+	<tr>
+		<td>Author</td>
+		<td>{{ repo_issueauthor }}</td>
+	</tr>
+	<tr>
+		<td>Participants</td>
+		<td>{{ repo_issueparticipants }}</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td style="white-space: normal;">
+			{{ repo_issue }}
+		</td>
+	</tr>
+</table>
+{% else %}
+<p style="background-color: orangered; padding: 10px">an error occured: no issues</p>
+{% endif %}
+{% elif refs %}
+<table class="laboratory_list">
+{% if repo_branches_list %}
+	<tr>
+		<th>Branch</th>
+		<th>Commit message</th>
+		<th>Author</th>
+		<th>Age</th>
+	</tr>
+	{{ repo_branches_list }}
+{% endif %}
+</table>
+{% elif log %}
+<table class="laboratory_list">
+{% if repo_commits_list %}
+	<tr>
+		<th>Short commit ID</th>
+		<th>Commit message</th>
+		<th>Author</th>
+		<th>Age</th>
+	</tr>
+	{{ repo_commits_list }}
+{% else %}
+	<tr>
+		<td>Author</td>
+		<td>{{ repo_commit_author }}</td>
+	</tr>
+	<tr>
+		<td>Committer</td>
+		<td>{{ repo_commit_committer }}</td>
+	</tr>
+	<tr>
+		<td>Commit</td>
+		<td><a href="{{ repo_url }}/-/tree/{{ repo_commit_id }}">{{ repo_commit_id }}</a></td>
+	</tr>
+	<tr>
+		<td>Parent</td>
+		<td><a href="{{ repo_url }}/-/commit/{{ repo_commit_parent }}">{{ repo_commit_parent }}</a></td>
+	</tr>
+	<tr>
+		<td>Message</td>
+		<td>{{ repo_commit_message }}</td>
+	</tr>
+</table>
+<pre style="font-size: 12pt">
+{{ repo_commit_diff }}
+</pre>
+{% endif %}
+</table>
+{% endif %}
