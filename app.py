@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/bin/python3
 #	Laboratory - Simple GitLab Frontend.
 #	Copyright (C) 2023 Ferass El Hafidi
 #
