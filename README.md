@@ -31,6 +31,7 @@ inspired by [Cgit](https://git.zx2c4.org/) and [SourceHut](https://sr.ht/).
   server error. This is GitLab.com's problem, not ours.
 * Laboratory is very sensitive about URLs
 * Laboratory currently cannot render RST-formatted README files
+* When a repository's empty, Laboratory freaks out
 
 ## Screenshots
 
