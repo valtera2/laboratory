@@ -10,6 +10,12 @@ repositories (those so-called 'projects').
 Then it parses that data and shows it in a JS-free lightweight webpage 
 inspired by [Cgit](https://git.zx2c4.org/) and [SourceHut](https://sr.ht/).
 
+## Dependencies
+
+* `pycmarkgfm`
+* `requests`
+* `flask` and all its dependencies
+
 ## TODO
 
 * Implement Merge Requests (currently all API call to MRs must be 
