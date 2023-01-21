@@ -295,9 +295,9 @@ if __name__ == "__main__":
 	print("=== Laboratory GitLab web frontend ===")
 	print("------ Flask Development server ------")
 	print("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-")
-	if argv[1] == '-h':
+	if len(argv) > 1 and argv[1] == '-h':
 		print("Usage: ./app.py [-d]")
 		print("\t-d\tEnable debug mode.")
-	elif argv[1] == '-d':
+	elif len(argv) > 1 and argv[1] == '-d':
 		app.run(debug=True)
 	else: app.run(debug=False)
