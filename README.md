@@ -36,8 +36,8 @@ inspired by [Cgit](https://git.zx2c4.org/) and [SourceHut](https://sr.ht/).
 
 | URL | Author | Note |
 |-----|--------|------|
-| https://lab.vern.cc | ~vern team | Has alternate subdomains |
-| https://laboratory.vitali64.duckdns.org | Ferass | Uses a [patch](https://git.vitali64.duckdns.org/misc/laboratory.vitali64.duckdns.org.git) applied on-top |
+| https://lab.vern.cc | ~vern team | Has alternate subdomains. |
+| https://laboratory.vitali64.duckdns.org | Ferass | Uses a [patch](https://git.vitali64.duckdns.org/misc/laboratory.vitali64.duckdns.org.git) applied on-top. Also used as a testing ground. |
 
 ## Screenshots
 
