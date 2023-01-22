@@ -1,12 +1,13 @@
 {% if wikis %}
+<div class="project_readme">
 {% if repo_wiki %}
 {{ repo_wiki }}
 {% else %}
-<p class="error">This project doesn't have a wiki.</p>
+<p style="background: red;">This project doesn't have a wiki.</p>
 {% endif %}
-{% endif %}
+</div>
 
-{% if about %}
+{% elif about %}
 <div class="project_readme">
 {% if repo_readme %}
 {{ repo_readme }}
