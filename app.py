@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 #	Laboratory - Simple GitLab Frontend.
 #	Copyright (C) 2023 Ferass El Hafidi
+#	Copyright (C) 2023 Leo Gavilieau <xmoo@vern.cc>
 #
 #	This program is free software: you can redistribute it and/or modify
 #	it under the terms of the GNU Affero General Public License as
@@ -25,6 +26,7 @@ from api.base import errcheck, get_projects_list
 
 from api.groups import get_group_data, get_subgroups_list
 from api.users import get_user_data, is_user
+from api.wiki import get_project_wiki_page, get_project_wiki_sitemap
 from api.repos import get_repo_cloneurls, get_repo_commits, \
     get_repo_description, get_repo_brancheslist, \
     get_repo_idle, get_repo_issue, get_repo_issueparticipants, \
@@ -287,6 +289,29 @@ def repo_issue(instance = None, user_group = None, repo = None, iid = None):
 		repo_avatar=get_repo_avatar(instance, full_reponame), \
 		repo_issuesstate=request.args.get('state'), \
 		instance=instance, \
+		repo_url="/%s/%s/%s" % (instance, user_group, repo))
+
+@app.route("/<instance>/<user_group>/<repo>/-/wikis/<path:wiki>",strict_slashes=False)
+@app.route("/<instance>/<user_group>/<repo>/-/wikis/<path:wiki>",strict_slashes=False)
+def project_wiki(instance = None, user_group = None, repo = None, wiki = None):
+	full_reponame = "%s%%2F%s" % (user_group.replace('/',"%2F"), repo)
+
+	if errcheck(instance, repo=full_reponame) != 200:
+		return abort(404)
+
+	wikicontent = ""
+	if wiki == "pages":
+		wikicontent = Markup(get_project_wiki_sitemap(instance, full_reponame))
+	else:
+		wikicontent = Markup(get_project_wiki_page(instance, full_reponame, wiki))
+
+	return render_template("common.html", title=Markup(\
+		'<a href="/%s/%s">%s</a>/<a href="/%s/%s/%s/-/wikis/home">%s</a>' \
+		% (instance, user_group, user_group, instance, user_group, repo, repo)),\
+		repository=1, wikis='active', \
+		repo_avatar=get_repo_avatar(instance, full_reponame), \
+		repo_wiki=wikicontent, instance=instance, \
+		repo_description=get_repo_description(instance, full_reponame), \
 		repo_url="/%s/%s/%s" % (instance, user_group, repo))
 
 if __name__ == "__main__":

@@ -1,5 +1,6 @@
 #	Laboratory - Simple GitLab Frontend.
 #	Copyright (C) 2023 Ferass El Hafidi
+#	Copyright (C) 2023 Leo Gavilieau <xmoo@vern.cc>
 #
 #	This program is free software: you can redistribute it and/or modify
 #	it under the terms of the GNU Affero General Public License as
@@ -22,31 +23,53 @@ from api.base import api_call
 def get_repo_primary_branch(instance, repo):
 	recv = api_call(\
 		'https://%s/api/v4/projects/%s' % (instance, repo))
-	return recv['default_branch']
+
+	if "default_branch" in recv:
+		return recv["default_branch"]
+
+	return "<none>"
 
 def get_repo_description(instance, repo):
 	recv = api_call("https://%s/api/v4/projects/%s" % \
 		(instance, repo))
-	if recv['description'] != None and recv['description'] != "":
-		return recv['description']
-	else:
-		return "<none>"
+	if "description" in recv:
+		if recv['description'] != None and recv['description'] != "":
+			return recv['description']
+	return "<none>" # If no conditions match
 
 def get_repo_idle(instance, repo):
 	recv = api_call("https://%s/api/v4/projects/%s" % \
 		(instance, repo))
-	return recv['last_activity_at']
+
+	if "last_activity_at" in recv:
+		# TODO: I will include a separate patch that prettifies the date soon.
+		return recv["last_activity_at"]
+	else:
+		return "<none>"
 
 def get_repo_cloneurls(instance, repo):
 	recv = api_call("https://%s/api/v4/projects/%s" % \
 		(instance, repo))
-	return recv['http_url_to_repo'], recv['ssh_url_to_repo']
+
+	a = "<none>" # Basic error handling
+	b = "<none>"
+	if "http_url_to_repo" in recv and recv["http_url_to_repo"] != "":
+		a = recv["http_url_to_repo"]
+	if "ssh_url_to_repo" in recv and recv["ssh_url_to_repo"] != "":
+		b = recv["ssh_url_to_repo"]
+
+	return a,b
 
 def get_repo_brancheslist(instance, repo, page = None):
 	branches_list = api_call(\
 		'https://%s/api/v4/projects/%s/repository/branches?page=%s&per_page=%s' \
 		% (instance, repo, page if page is not None else 1, \
 			100 if page is not None else 8))
+
+	if "message" in branches_list:
+		return "<p class=\"error\">Could not retrieve list of branches: %s</p>" \
+			% (branches_list["message"])
+
 	# Convert to HTML
 	branches_list_html = ""
 	for branch in branches_list:
@@ -62,6 +85,11 @@ def get_repo_tagslist(instance, repo, page = None):
 		'https://%s/api/v4/projects/%s/repository/tags?page=%s&per_page=%s' \
 		% (instance, repo, page if page is not None else 1, \
 			100 if page is not None else 8))
+
+	if "message" in tags_list:
+		return "<p class=\"error\">Could not retrieve list of tags: %s</p>" \
+			% (tags_list["message"])
+
 	# Convert to HTML
 	tags_list_html = ""
 	for tag in tags_list:
@@ -82,6 +110,11 @@ def get_repo_commits(instance, repo, page = 1, branch = None, commit = None):
 			commits_list = api_call(\
 				'https://%s/api/v4/projects/%s/repository/commits?page=%s&per_page=%s' \
 				% (instance, repo, page, 100))
+
+		if "message" in commits_list:
+			return "<p class=\"error\">Could not retrieve commits: %s</p>" \
+				% (commits_list["message"])
+
 		# Convert to HTML
 		commits_list_html = ""
 		for commit in commits_list:
@@ -121,6 +154,10 @@ def get_repo_readme(instance, repo):
 	recv = api_call(\
 		'https://%s/api/v4/projects/%s' % (instance, repo))
 	readme_decoded = "" # No readme
+
+	if not "readme_url" in recv:
+		return ""
+
 	if recv['readme_url']:
 		readme = api_call(\
 			'https://%s/api/v4/projects/%s/repository/files/%s?ref=%s' \
@@ -147,6 +184,11 @@ def get_repo_tree(instance, repo, path, branch = None):
 	tree = api_call(\
 		'https://%s/api/v4/projects/%s/repository/tree?path=%s&per_page=100&ref=%s' % \
 		(instance, repo, path, branch))
+
+	if "message" in tree:
+		return "<p class=\"error\">Could not retrieve tree list: %s</p>" \
+			% (tree["message"])
+
 	tree_html = ""
 	for file in tree:
 		tree_html += "<tr><td>%s</td>" % file['mode'] + \
