@@ -22,7 +22,6 @@ inspired by [Cgit](https://git.zx2c4.org/) and [SourceHut](https://sr.ht/).
   authenticated)
 * Implement Logging in (possibly just a matter of getting the token key and 
   using it for all requests, plus some other features like creating repos)
-* Implement Wikis support
 * And more
 
 ## Known Issues
