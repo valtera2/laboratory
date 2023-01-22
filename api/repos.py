@@ -67,8 +67,7 @@ def get_repo_brancheslist(instance, repo, page = None):
 			100 if page is not None else 8))
 
 	if "message" in branches_list:
-		return "<p class=\"error\">Could not retrieve list of branches: %s</p>" \
-			% (branches_list["message"])
+		return ""
 
 	# Convert to HTML
 	branches_list_html = ""
@@ -87,8 +86,7 @@ def get_repo_tagslist(instance, repo, page = None):
 			100 if page is not None else 8))
 
 	if "message" in tags_list:
-		return "<p class=\"error\">Could not retrieve list of tags: %s</p>" \
-			% (tags_list["message"])
+		return ""
 
 	# Convert to HTML
 	tags_list_html = ""
