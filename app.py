@@ -179,7 +179,6 @@ def repo_showlog(instance = None, user_group = None, repo = None, commit_id = No
 	if errcheck(instance, repo=full_reponame) != 200:
 		return abort(404)
 	commit_info = get_repo_commits(instance, full_reponame, 1, None, commit_id)
-	print(commit_info)
 	return render_template('common.html', title=Markup(\
 		'<a href="/%s/%s">%s</a>/%s' % (instance, user_group, user_group, repo)),\
 		repository=1, log='active', \
