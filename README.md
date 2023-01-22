@@ -33,21 +33,17 @@ inspired by [Cgit](https://git.zx2c4.org/) and [SourceHut](https://sr.ht/).
 * Laboratory currently cannot render RST-formatted README files
 * When a repository's empty, Laboratory freaks out
 
+## Instances
+
+| URL | Author | Note |
+|-----|--------|------|
+| https://lab.vern.cc | ~vern team | Has alternate subdomains |
+| https://laboratory.vitali64.duckdns.org | Ferass | Uses a [patch](https://git.vitali64.duckdns.org/misc/laboratory.vitali64.duckdns.org.git) applied on-top |
+
 ## Screenshots
 
-<table>
-<tr>
-<td>
-![Main page](screenshots/main.png)
-</td>
-</tr>
-<tr>
-<td>
-![Group projects](screenshots/group.png)
-</tr>
-<tr>
-<td>
-![Repository summary](screenshots/repo.png)
-</td>
-</tr>
-</table>
+<img src="screenshots/main.png">Main page</img>
+
+<img src="screenshots/group.png">Browsing Group repositories</img>
+
+<img src="screenshots/repo.png">Browsing a repository</img>
