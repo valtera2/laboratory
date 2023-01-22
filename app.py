@@ -188,7 +188,7 @@ def repo_showlog(instance = None, user_group = None, repo = None, commit_id = No
 		repo_commit_id=commit_info[2], \
 		repo_commit_parent=commit_info[3], \
 		repo_commit_message=commit_info[4], \
-		repo_commit_diff=Markup(commit_info[5]), \
+		repo_commit_diff=commit_info[5], \
 		repo_avatar=get_repo_avatar(instance, full_reponame), \
 		instance=instance, \
 		repo_url="/%s/%s/%s" % (instance, user_group, repo))
@@ -236,7 +236,7 @@ def repo_blob(instance = None, user_group = None, repo = None, \
 	return render_template('common.html', title=Markup(\
 		'<a href="/%s/%s">%s</a>/%s' % (instance, user_group, user_group, repo)),\
 		repository=1, tree='active', \
-		repo_blob=Markup(get_repo_blob(instance, full_reponame, blob, branch)[0]), \
+		repo_blob=get_repo_blob(instance, full_reponame, blob, branch)[0], \
 		repo_bloblines=Markup(get_repo_blob(instance, full_reponame, blob, branch)[1]), \
 		repo_description=get_repo_description(instance, full_reponame), \
 		repo_avatar=get_repo_avatar(instance, full_reponame), \
