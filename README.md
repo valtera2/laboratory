@@ -16,12 +16,50 @@ inspired by [Cgit](https://git.zx2c4.org/) and [SourceHut](https://sr.ht/).
 * `requests`
 * `flask` and all its dependencies
 
+## Features
+
+### Basic
+
+* List projects for any instance
+* List group projects
+* List group subgroups
+
+### Repositories
+
+* Issues (no comments though)
+* Wikis
+* Tree
+* Show a commit
+* Log
+* Partial README rendering
+* Refs
+* Description
+* Idle
+* Avatar
+
+### Groups
+
+* Subgroups
+* Repositories
+* Avatar
+
+### Users
+
+* Avatar
+* State
+
+Unfourtunately, accessing more data about users requires authentication, 
+so don't expect Laboratory to fetch more than that unless GitLab changes 
+that.
+
 ## TODO
 
-* Implement Merge Requests (currently all API call to MRs must be 
+* Implement Merge Requests (currently all API calls to MRs must be 
   authenticated)
 * Implement Logging in (possibly just a matter of getting the token key and 
   using it for all requests, plus some other features like creating repos)
+* Group wikis
+* Proper support for project wikis that aren't really repositories
 * And more
 
 ## Known Issues
@@ -30,7 +68,7 @@ inspired by [Cgit](https://git.zx2c4.org/) and [SourceHut](https://sr.ht/).
   server error. This is GitLab.com's problem, not ours.
 * Laboratory is very sensitive about URLs
 * Laboratory currently cannot render RST-formatted README files
-* When a repository's empty, Laboratory freaks out
+* Laboratory freaks out when a blob is not a "normal" file (e.g. an image)
 
 ## Instances
 
@@ -40,6 +78,8 @@ inspired by [Cgit](https://git.zx2c4.org/) and [SourceHut](https://sr.ht/).
 | https://laboratory.vitali64.duckdns.org | Ferass | Uses a [patch](https://git.vitali64.duckdns.org/misc/laboratory.vitali64.duckdns.org.git) applied on-top. Also used as a testing ground. |
 
 ## Screenshots
+
+These screenshots may be outdated.
 
 <img src="screenshots/main.png">Main page</img>
 
