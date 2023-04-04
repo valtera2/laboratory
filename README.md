@@ -72,10 +72,11 @@ that.
 
 ## Instances
 
-| URL | Author | Note |
-|-----|--------|------|
-| https://lab.vern.cc | ~vern team | Has alternate subdomains. |
-| https://laboratory.vitali64.duckdns.org | Ferass | Uses a [patch](https://git.vitali64.duckdns.org/misc/laboratory.vitali64.duckdns.org.git) applied on-top. Also used as a testing ground. |
+| URL | Author | Vanilla/Modified/...? | Note | Has an onion site? |
+|-----|--------|-----------------------|------|--------------------|
+| https://lab.vern.cc | ~vern team | Vanilla. | Has alternate subdomains. Sometimes down. | Yes |
+| https://laboratory.esmailelbob.xyz | Esmail EL BoB | Vanilla. | | Yes |
+| https://laboratory.vitali64.duckdns.org | Ferass | [Patched](https://git.vitali64.duckdns.org/misc/laboratory.vitali64.duckdns.org.git). | Used as a testing ground. | Yes |
 
 ## Screenshots
 
