@@ -1,4 +1,4 @@
-# Laboratory
+<img src="static/logo.png" width=300px>
 
 *A Simple GitLab frontend.*
 
