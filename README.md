@@ -72,6 +72,34 @@ that.
 
 ## Instances
 
+For an instance to be listed here, it needs to meet the following 
+requirements: 
+
+* Instances MUST have been up for at least a month before it can be added 
+  to this list.
+* Instances MUST have been updated in the last month. An instance that hasn't 
+  been updated in the last month is considered unmaintained and is removed 
+  from the list.
+* Instances MUST be served via domain name.
+* Instances MUST be served via HTTPS (or/and onion).
+* Instances using any man-in-the-middle service MUST be marked as such 
+  (e.g. Cloudflare, DDoS-Guard...).
+* Instances using any type of anti-bot protection MUST be marked as such.
+* Instances MUST NOT use any type of analytics.
+* Instances running a modified source code MUST respect the AGPL by publishing 
+  their source code and stating their changes before they are added to the 
+  list and MUST contain a link to both the modified and original source code 
+  of Laboratory in the footer.
+* Instances MUST NOT serve ads NOR promote products.
+* Instances MUST NOT restrict or disallow the access / usage to any 
+  [natural person](https://en.wikipedia.org/wiki/Natural_person) 
+  (e.g. a country's IP range MUST NOT be blocked, access by a natural 
+  person MUST NOT be disallowed for arbirary reason) - this rule doesn't 
+  apply to juridical persons.
+
+***Note***: If you see any instance in this list not following the rules, 
+please let us know.
+
 | URL | Author | Vanilla/Modified/...? | Note | Has an onion site? |
 |-----|--------|-----------------------|------|--------------------|
 | https://lab.vern.cc | ~vern team | Vanilla. | Has alternate subdomains. Sometimes down. | Yes |
