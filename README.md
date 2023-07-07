@@ -103,7 +103,6 @@ please let us know.
 | URL | Author | Vanilla/Modified/...? | Note | Has an onion site? |
 |-----|--------|-----------------------|------|--------------------|
 | https://lab.vern.cc | ~vern team | Vanilla. | Has alternate subdomains. Sometimes down. | Yes |
-| https://laboratory.esmailelbob.xyz | Esmail EL BoB | Vanilla. | | Yes |
 | https://laboratory.vitali64.duckdns.org | Ferass | [Patched](https://git.vitali64.duckdns.org/misc/laboratory.vitali64.duckdns.org.git). | Used as a testing ground. | Yes |
 
 ## Screenshots
