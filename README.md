@@ -2,6 +2,9 @@
 
 *A Simple GitLab frontend.*
 
+this is only a fork adding requirements.txt for easy deployment.
+The original: https://laboratory.vitali64.duckdns.org
+
 ## How does it work?
 
 Laboratory uses GitLab's REST API to fetch data about users/groups and 
